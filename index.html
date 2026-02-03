@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Развитие поисковых систем | Интерактивное сравнение</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         :root {
+            --blue-primary: #6B9AC4;
+            /* Голубой для неба/гор */
+            --blue-light: #97B8D4;
+            /* Светлый голубой */
+            --blue-dark: #4A7BA5;
+            /* Темный голубой */
+            --beige: #F5E9DA;
+            /* Бежевый фон */
+            --peach: #FFC7A0;
+            /* Персиковый акцент */
+            --gray-light: #A3A3A3;
+            /* Светло-серый */
+            --gray-medium: #6D6D6D;
+            /* Средне-серый */
+            --gray-dark: #333333;
+            /* Темно-серый */
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, var(--blue-light) 0%, var(--beige) 30%, var(--beige) 100%);
+            color: var(--gray-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        
+        header {
+            background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-dark) 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        /* Navigation */
+        
+        nav {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--blue-dark);
+            font-weight: 500;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(107, 154, 196, 0.1);
+            border-color: var(--blue-primary);
+        }
+        
+        nav ul li a.active {
+            background-color: var(--blue-primary);
+            color: white;
+            box-shadow: 0 4px 8px rgba(107, 154, 196, 0.3);
+        }
+        /* Chapters */
+        
+        .chapter {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 6px solid var(--peach);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .chapter:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .chapter h2 {
+            color: var(--blue-dark);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--peach);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .chapter h3 {
+            color: var(--gray-medium);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+            padding-left: 10px;
+            border-left: 3px solid var(--blue-light);
+        }
+        
+        .chapter p {
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .chapter ul,
+        .chapter ol {
+            margin-left: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .chapter li {
+            margin-bottom: 10px;
+            padding-left: 8px;
+        }
+        
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 233, 218, 0.6) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 199, 160, 0.3);
+        }
+        
+        .feature-card h4 {
+            color: var(--blue-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* Timeline */
+        
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 30px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--blue-primary), var(--peach));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--blue-primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--peach);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--blue-dark);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        /* Comparison Section */
+        
+        .comparison-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comparison-section h2 {
+            color: var(--blue-dark);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--peach);
+        }
+        
+        .comparison-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            background-color: rgba(245, 233, 218, 0.5);
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .query-input {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .query-input input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--blue-light);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .query-input input:focus {
+            outline: none;
+            border-color: var(--blue-primary);
+            box-shadow: 0 0 0 3px rgba(107, 154, 196, 0.2);
+        }
+        
+        .engine-selector {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .engine-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background-color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        
+        .engine-option:hover {
+            background-color: rgba(107, 154, 196, 0.05);
+        }
+        
+        .engine-option.selected {
+            border-color: var(--blue-primary);
+            background-color: rgba(107, 154, 196, 0.1);
+        }
+        
+        .engine-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .google .engine-icon {
+            background: linear-gradient(135deg, #4285F4, #34A853);
+        }
+        
+        .yandex .engine-icon {
+            background: linear-gradient(135deg, #FF0000, #FFCC00);
+        }
+        
+        .bing .engine-icon {
+            background: linear-gradient(135deg, #008373, #00A4EF);
+        }
+        
+        .search-button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            align-self: center;
+            min-width: 150px;
+        }
+        
+        .search-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(107, 154, 196, 0.3);
+        }
+        
+        .search-button:active {
+            transform: translateY(-1px);
+        }
+        /* Search Results Display */
+        
+        .results-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 300px;
+            justify-content: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-card.google-card {
+            border-color: rgba(66, 133, 244, 0.3);
+        }
+        
+        .result-card.yandex-card {
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .result-card.bing-card {
+            border-color: rgba(0, 131, 115, 0.3);
+        }
+        
+        .result-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .google-icon {
+            background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
+        }
+        
+        .yandex-icon {
+            background: linear-gradient(135deg, #FF0000, #FFCC00);
+        }
+        
+        .bing-icon {
+            background: linear-gradient(135deg, #008373, #00A4EF);
+        }
+        
+        .result-card h3 {
+            color: var(--gray-dark);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .result-card p {
+            color: var(--gray-medium);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .open-search-btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .open-search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(107, 154, 196, 0.3);
+        }
+        /* Footer */
+        
+        footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li a {
+                justify-content: center;
+            }
+            .results-display {
+                grid-template-columns: 1fr;
+            }
+            .comparison-controls {
+                flex-direction: column;
+            }
+            .query-input {
+                min-width: 100%;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .chapter {
+                padding: 25px;
+            }
+        }
+        /* Back to top */
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        /* Animation for search */
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .searching {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .search-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(245, 233, 218, 0.7);
+            border-radius: 10px;
+            text-align: center;
+            color: var(--gray-medium);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-search"></i> Развитие поисковых систем</h1>
+            <p>От первых алгоритмов до современных технологий искусственного интеллекта</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="#chapter1" class="active"><i class="fas fa-cogs"></i> Устройство ПС</a></li>
+                <li><a href="#chapter2"><i class="fas fa-history"></i> История развития</a></li>
+                <li><a href="#chapter3"><i class="fas fa-chart-line"></i> Современные игроки</a></li>
+                <li><a href="#comparison"><i class="fas fa-balance-scale"></i> Сравнение систем</a></li>
+            </ul>
+        </nav>
+
+        <!-- Chapter 1 -->
+        <section id="chapter1" class="chapter">
+            <h2><i class="fas fa-cogs"></i> Глава 1: Что такое поисковая система</h2>
+
+            <p>Поисковая система (поисковик) — это программное обеспечение или онлайн-сервис для поиска информации в интернете, на определённом интернет-ресурсе или в базах данных. Позволяет пользователям искать информацию, используя ключевые слова или фразы.
+                Результаты обычно представляет как список ссылок на веб-страницы, документы, изображения, видео и т. д., соответствующих запросу и ранжированных по релевантности — степени соответствия
+            </p>
+
+            <h3>Основные компоненты поисковой системы:</h3>
+            <div class="feature-list">
+                <div class="feature-card">
+                    <h4><i class="fas fa-robot"></i> Поисковый робот (краулер)</h4>
+                    <p>Программа, которая автоматически проходит по всем ссылкам, найденным на странице, и выделяет их. Поисковый робот, основываясь на ссылках или исходя из заранее заданного списка адресов, осуществляет поиск новых документов, ещё не известных
+                        поисковой системе.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-database"></i> Поисковик </h4>
+                    <p>Анализирует содержание каждой страницы для дальнейшего индексирования. Слова могут быть извлечены из заголовков, текста страницы или специальных полей — метатегов.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-sort-amount-down"></i> Индексатор </h4>
+                    <p>Модуль, который анализирует страницу, предварительно разбив её на части, применяя собственные лексические и морфологические алгоритмы. Все элементы веб-страницы вычленяются и анализируются отдельно. Данные о веб-страницах хранятся
+                        в индексной базе данных для использования в последующих запросах. Индекс позволяет быстро находить информацию по запросу пользователя</p>
+                </div>
+            </div>
+
+            <h3>Как работает поиск:</h3>
+            <ol>
+                <li>Пользователь вводит запрос в поисковую строку</li>
+                <li>Система анализирует запрос, определяет его смысл и intent (намерение пользователя)</li>
+                <li>В индексе отбираются наиболее релевантные страницы</li>
+                <li>Алгоритмы ранжирования сортируют результаты по степени соответствия запросу</li>
+                <li>Пользователь получает упорядоченный список результатов</li>
+            </ol>
+
+            <p>Современные поисковые системы используют технологии искусственного интеллекта и машинного обучения для понимания естественного языка и контекста запросов. Они анализируют не только ключевые слова, но и семантику, синонимы, а также учитывают
+                персональные предпочтения пользователя.</p>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section id="chapter2" class="chapter">
+            <h2><i class="fas fa-history"></i> Глава 2: История развития поисковых систем</h2>
+
+            <p>История поисковых систем начинается задолго до появления современного интернета. Первые системы поиска информации создавались для локальных сетей и баз данных.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1990 — Archie</div>
+                    <p>была создана в 1990 году студентами, изучающими информатику в университете Макгилла в Монреале. Программа скачивала списки всех файлов со всех доступных анонимных FTP-серверов и строила базу данных, в которой можно было выполнять поиск
+                        по именам файлов. Однако, программа Арчи не индексировала содержимое этих файлов, так как объём данных был настолько мал, что всё можно было легко найти вручную.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1994 — WebCrawler</div>
+                    <p>Первой полнотекстовой индексирующей ресурсы при помощи робота поисковой системой, стала система «WebCrawler», запущенная в 1994 году. В отличие от своих предшественниц, она позволяла пользователям искать по любым словам, расположенным
+                        на любой веб-странице — с тех пор это стало стандартом для большинства поисковых систем. Кроме того, это был первый поисковик, получивший широкое распространение. </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1994 — Yahoo!</div>
+                    <p>В январе 1994 года аспиранты Стэнфордского университета Дэвид Фило и Джерри Янг создали веб-сайт, который назывался «Путеводитель Джерри по Всемирной паутине». «Путеводитель» представлял собой каталог других сайтов. В апреле 1994 года
+                        сайт был переименован в Yahoo! Янг и Фило быстро оценили коммерческий потенциал проекта и 2 марта 1995 года основали корпорацию Yahoo! Позже Yahoo! приобретает почтовый сервис, сервисы браузерных игр и сервис онлайн коммуникаций.
+                        Так обычный поисковик превратился в целую систему с почтой, играми и мессенджером.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1995 — AltaVista</div>
+                    <p>появилась в декабре 1995 года и была поддержана самым мощным доступным на тот момент вычислительным сервером. Её особенности включали инновационную технологию индексации, расширенный поиск с использованием логических операторов и фильтров,
+                        а также поддержку мультимедиа (изображений, аудио- и видео). Это была самая быстрая поисковая система, которая могла обрабатывать миллионы поисковых запросов в день. Важным нововведением AltaVista было включение поиска естественного
+                        языка. Пользователи могли напечатать фразу или вопрос и получить интеллектуальный ответ.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1997 - Яндекс</div>
+                    <p>В 1993 году компания CompTek создала поисковую программу на жёстком диске компьютера и ей было дано имя «Yandex», название которой придумали Илья Сегалович, директор «Яндекса» по технологиям, и генеральный директор компании — Аркадий
+                        Волож. Сотрудничая с Институтом проблем передачи информации, CompTek создала словарь с поиском, который учитывал морфологию русского языка. В 1995 году было принято решение об использовании поискового приложения для сети Интернет.
+                        Сначала оно работало с ограниченным числом ресурсов, а позже со всем русскоязычным сегментом Интернета (рунетом). 23 сентября 1997 года состоялся официальный анонс поисковой машины Yandex.Ru.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1997 - Google</div>
+                    <p>Google возник на основе исследовательского проекта BackRub, который был запущен в 1996 году Ларри Пейджем и Сергеем Брином, когда они оба были аспирантами Стэнфордского университета. Веб-сканер Пейджа начал исследовать сеть в марте
+                        1996 года, и единственной отправной точкой была домашняя страница Пейджа в Стэнфорде. Брин и Пейдж разработали алгоритм PageRank для преобразования данных о обратных ссылках, которые они собирали для конкретной веб-страницы, в
+                        показатель важности. Они поняли, что поисковая система, основанная на PageRank, будет выдавать более качественные результаты, чем существующие поисковые системы, которые ранжировали результаты в зависимости от того, сколько раз
+                        поисковый запрос встречался на странице. Первая версия Google была выпущена в августе 1996 года на веб-сайте Стэнфорда и использовала почти половину всей пропускной способности сети Стэнфорда.</p>
+                </div>
+            </div>
+
+            <h3>Эволюция поисковых алгоритмов:</h3>
+            <ul>
+                <li><strong>1990-е:</strong> Простые алгоритмы на основе ключевых слов, ручная модерация каталогов</li>
+                <li><strong>2000-е:</strong> Учёт ссылочной массы (PageRank), борьба с поисковым спамом</li>
+                <li><strong>2010-е:</strong> Учёт поведенческих факторов, персонализация, семантический поиск</li>
+                <li><strong>2020-е:</strong> ИИ для понимания контекста, голосовой поиск, мультимодальный поиск (текст + изображение + видео)</li>
+            </ul>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section id="chapter3" class="chapter">
+            <h2><i class="fas fa-chart-line"></i> Глава 3: Современные игроки рынка</h2>
+
+            <p>Сегодня рынок поисковых систем представляет собой олигополию с доминированием нескольких крупных игроков, каждый из которых имеет свои особенности и целевую аудиторию.</p>
+
+            <h3>Google — мировой лидер</h3>
+            <p>Занимает более 90% мирового рынка поиска. Основные преимущества:</p>
+            <ul>
+                <li>Самый сложный и точный алгоритм ранжирования на основе ИИ</li>
+                <li>Глубокая интеграция с сервисами Google (Gmail, YouTube, Maps, Android)</li>
+                <li>Постоянные инновации в области машинного обучения (RankBrain, BERT, MUM)</li>
+                <li>Лучшая скорость обработки запросов (среднее время ответа — 0.2 секунды)</li>
+            </ul>
+
+            <h3>Яндекс — лидер в России и СНГ</h3>
+            <p>Доля на российском рынке — около 60%. Особенности:</p>
+            <ul>
+                <li>Продвинутый учёт морфологии русского языка</li>
+                <li>Сильная интеграция с локальными сервисами (Яндекс.Карты, Яндекс.Маркет, Дзен)</li>
+                <li>Развитая экосистема (Яндекс.Такси, Яндекс.Еда, Яндекс.Музыка)</li>
+                <li>Технология "Спектр" для глубокого понимания смысла запросов</li>
+            </ul>
+
+            <h3>Bing — поисковик Microsoft</h3>
+            <p>Второе место на мировом рынте (около 3%). Ключевые особенности:</p>
+            <ul>
+                <li>Глубокая интеграция с Windows и Office 365</li>
+                <li>Уникальный дизайн с ежедневно обновляющимися фоновыми изображениями</li>
+                <li>Система вознаграждений Bing Rewards за использование поиска</li>
+                <li>Поиск по видео с возможностью предпросмотра при наведении</li>
+            </ul>
+        </section>
+
+        <!-- Comparison Section -->
+        <section id="comparison" class="comparison-section">
+            <h2><i class="fas fa-balance-scale"></i> Глава 4: Наглядное сравнение поисковых систем</h2>
+            <p style="text-align: center; margin-bottom: 25px; color: var(--gray-medium); font-size: 1.1rem;">Введите поисковый запрос и выберите поисковые системы для сравнения</p>
+
+            <div class="comparison-controls">
+                <div class="query-input">
+                    <input type="text" id="search-query" placeholder="Введите поисковый запрос, например: 'искусственный интеллект' или 'погода в Москве'">
+                </div>
+
+                <div class="engine-selector">
+                    <div class="engine-option google selected" data-engine="google">
+                        <div class="engine-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <span>Google</span>
+                    </div>
+                    <div class="engine-option yandex selected" data-engine="yandex">
+                        <div class="engine-icon">
+                            <i class="fab fa-yandex"></i>
+                        </div>
+                        <span>Yandex</span>
+                    </div>
+                    <div class="engine-option bing selected" data-engine="bing">
+                        <div class="engine-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <span>Bing</span>
+                    </div>
+                </div>
+
+                <button class="search-button" id="perform-search">
+                    <i class="fas fa-search"></i> Открыть поиск
+                </button>
+            </div>
+
+            <div class="search-info">
+                <i class="fas fa-info-circle"></i> Выбранные поисковые системы откроются в новых вкладках/окнах браузера
+            </div>
+
+            <div class="results-display">
+                <!-- Google Card -->
+                <div class="result-card google-card">
+                    <div class="result-icon google-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google</h3>
+                    <p>Крупнейшая поисковая система в мире</p>
+                    <button class="open-search-btn" onclick="openGoogleSearch()">
+                        <i class="fas fa-external-link-alt"></i> Открыть Google
+                    </button>
+                </div>
+
+                <!-- Yandex Card -->
+                <div class="result-card yandex-card">
+                    <div class="result-icon yandex-icon">
+                        <i class="fab fa-yandex"></i>
+                    </div>
+                    <h3>Yandex</h3>
+                    <p>Лидер поиска в России и СНГ</p>
+                    <button class="open-search-btn" onclick="openYandexSearch()">
+                        <i class="fas fa-external-link-alt"></i> Открыть Яндекс
+                    </button>
+                </div>
+
+                <!-- Bing Card -->
+                <div class="result-card bing-card">
+                    <div class="result-icon bing-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3>Bing</h3>
+                    <p>Поисковая система от Microsoft</p>
+                    <button class="open-search-btn" onclick="openBingSearch()">
+                        <i class="fas fa-external-link-alt"></i> Открыть Bing
+                    </button>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background-color: rgba(245, 233, 218, 0.5); border-radius: 15px;">
+                <h3 style="color: var(--blue-dark); margin-top: 0;"><i class="fas fa-lightbulb"></i> Что можно сравнить:</h3>
+                <ul style="columns: 2; column-gap: 40px;">
+                    <li>Количество найденных результатов</li>
+                    <li>Актуальность информации</li>
+                    <li>Формат представления результатов</li>
+                    <li>Наличие дополнительных блоков (новости, картинки, видео)</li>
+                    <li>Локализация результатов (особенно для региональных запросов)</li>
+                    <li>Скорость загрузки результатов</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-code"></i> Образовательный сайт "Развитие поисковых систем"</p>
+            <p>Интерактивное сравнение Google, Yandex и Bing | Практическая часть проекта</p>
+            <p>© 2023 | Создано с использованием HTML, CSS и JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Store current search query globally
+        let currentSearchQuery = "история поисковых систем";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchButton = document.getElementById('perform-search');
+            const searchInput = document.getElementById('search-query');
+            const engineOptions = document.querySelectorAll('.engine-option');
+
+            // Initialize with a sample query
+            searchInput.value = currentSearchQuery;
+
+            // Toggle engine selection
+            engineOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                });
+            });
+
+            // Perform search when button is clicked
+            searchButton.addEventListener('click', performSearch);
+
+            // Also perform search when Enter is pressed in the input field
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Update current query when input changes
+            searchInput.addEventListener('input', function() {
+                currentSearchQuery = this.value.trim();
+            });
+
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Navigation highlighting
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('.chapter, .comparison-section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        function performSearch() {
+            const query = document.getElementById('search-query').value.trim();
+            if (!query) {
+                alert('Пожалуйста, введите поисковый запрос');
+                return;
+            }
+
+            // Update current query
+            currentSearchQuery = query;
+
+            // Check if at least one engine is selected
+            const selectedEngines = document.querySelectorAll('.engine-option.selected');
+            if (selectedEngines.length === 0) {
+                alert('Пожалуйста, выберите хотя бы одну поисковую систему');
+                return;
+            }
+
+            // Add searching animation to button
+            const searchButton = document.getElementById('perform-search');
+            const originalText = searchButton.innerHTML;
+            searchButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Открываем...';
+            searchButton.classList.add('searching');
+
+            // Array to track which engines are being opened
+            const enginesToOpen = [];
+
+            // Collect all selected engines
+            selectedEngines.forEach(engine => {
+                const engineType = engine.getAttribute('data-engine');
+                enginesToOpen.push(engineType);
+            });
+
+            // Open ALL selected search engines in new tabs
+            // Using setTimeout with small delay to avoid popup blockers
+            enginesToOpen.forEach((engine, index) => {
+                setTimeout(() => {
+                    openSearchEngine(engine);
+
+                    // Show notification when all tabs are opened
+                    if (index === enginesToOpen.length - 1) {
+                        setTimeout(() => {
+                            // Show success message
+                            const successMessage = document.createElement('div');
+                            successMessage.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+                            color: white;
+                            padding: 15px 25px;
+                            border-radius: 10px;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                            z-index: 1000;
+                            font-weight: 500;
+                            animation: slideIn 0.3s ease;
+                        `;
+                            successMessage.innerHTML = `
+                            <i class="fas fa-check-circle"></i> 
+                            Открыто ${enginesToOpen.length} поисковых систем
+                        `;
+                            document.body.appendChild(successMessage);
+
+                            // Remove message after 3 seconds
+                            setTimeout(() => {
+                                successMessage.style.animation = 'slideOut 0.3s ease';
+                                setTimeout(() => successMessage.remove(), 300);
+                            }, 3000);
+                        }, 500);
+                    }
+                }, index * 100); // Small delay between opening tabs
+            });
+
+            // Reset button after 1.5 seconds
+            setTimeout(() => {
+                searchButton.innerHTML = originalText;
+                searchButton.classList.remove('searching');
+            }, 1500);
+
+            // Add CSS for animations
+            if (!document.getElementById('search-animations')) {
+                const style = document.createElement('style');
+                style.id = 'search-animations';
+                style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function openSearchEngine(engine) {
+            const encodedQuery = encodeURIComponent(currentSearchQuery);
+            let url = '';
+
+            switch (engine) {
+                case 'google':
+                    url = `https://www.google.com/search?q=${encodedQuery}&hl=ru`;
+                    break;
+                case 'yandex':
+                    url = `https://yandex.ru/search/?text=${encodedQuery}&lr=213`;
+                    break;
+                case 'bing':
+                    url = `https://www.bing.com/search?q=${encodedQuery}&setlang=ru`;
+                    break;
+            }
+
+            // Open in new tab/window
+            // Using '_blank' for new tabs
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        // Individual button functions - теперь они тоже открывают ВСЕ выбранные системы
+        function openGoogleSearch() {
+            // Select Google if not already selected
+            const googleOption = document.querySelector('.engine-option.google');
+            if (!googleOption.classList.contains('selected')) {
+                googleOption.classList.add('selected');
+            }
+            performSearch();
+        }
+
+        function openYandexSearch() {
+            // Select Yandex if not already selected
+            const yandexOption = document.querySelector('.engine-option.yandex');
+            if (!yandexOption.classList.contains('selected')) {
+                yandexOption.classList.add('selected');
+            }
+            performSearch();
+        }
+
+        function openBingSearch() {
+            // Select Bing if not already selected
+            const bingOption = document.querySelector('.engine-option.bing');
+            if (!bingOption.classList.contains('selected')) {
+                bingOption.classList.add('selected');
+            }
+            performSearch();
+        }
+
+        // Quick search buttons for common queries
+        function addQuickSearchButtons() {
+            const quickQueries = [{
+                text: "История интернета",
+                query: "история развития интернета"
+            }, {
+                text: "Искусственный интеллект",
+                query: "искусственный интеллект в поисковых системах"
+            }, {
+                text: "Новости технологий",
+                query: "последние новости технологий 2023"
+            }];
+
+            const quickSearchDiv = document.createElement('div');
+            quickSearchDiv.style.cssText = `
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        `;
+
+            quickQueries.forEach(item => {
+                const button = document.createElement('button');
+                button.textContent = item.text;
+                button.style.cssText = `
+                padding: 8px 15px;
+                background: rgba(255,255,255,0.8);
+                border: 1px solid var(--blue-light);
+                border-radius: 20px;
+                color: var(--blue-dark);
+                cursor: pointer;
+                transition: all 0.2s ease;
+            `;
+                button.onmouseover = () => button.style.background = 'rgba(107, 154, 196, 0.1)';
+                button.onmouseout = () => button.style.background = 'rgba(255,255,255,0.8)';
+                button.onclick = () => {
+                    document.getElementById('search-query').value = item.query;
+                    performSearch();
+                };
+
+                quickSearchDiv.appendChild(button);
+            });
+
+            const comparisonSection = document.querySelector('.comparison-controls');
+            comparisonSection.parentNode.insertBefore(quickSearchDiv, comparisonSection.nextSibling);
+        }
+
+        // Initialize quick search buttons when page loads
+        window.addEventListener('load', addQuickSearchButtons);
+    </script>
+</body>
+
+</html>
