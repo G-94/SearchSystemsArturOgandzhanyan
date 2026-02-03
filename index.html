@@ -907,53 +907,10 @@
             searchButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Открываем...';
             searchButton.classList.add('searching');
 
-            // Array to track which engines are being opened
-            const enginesToOpen = [];
-
-            // Collect all selected engines
+            // Open selected search engines in new tabs
             selectedEngines.forEach(engine => {
                 const engineType = engine.getAttribute('data-engine');
-                enginesToOpen.push(engineType);
-            });
-
-            // Open ALL selected search engines in new tabs
-            // Using setTimeout with small delay to avoid popup blockers
-            enginesToOpen.forEach((engine, index) => {
-                setTimeout(() => {
-                    openSearchEngine(engine);
-
-                    // Show notification when all tabs are opened
-                    if (index === enginesToOpen.length - 1) {
-                        setTimeout(() => {
-                            // Show success message
-                            const successMessage = document.createElement('div');
-                            successMessage.style.cssText = `
-                            position: fixed;
-                            top: 20px;
-                            right: 20px;
-                            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
-                            color: white;
-                            padding: 15px 25px;
-                            border-radius: 10px;
-                            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                            z-index: 1000;
-                            font-weight: 500;
-                            animation: slideIn 0.3s ease;
-                        `;
-                            successMessage.innerHTML = `
-                            <i class="fas fa-check-circle"></i> 
-                            Открыто ${enginesToOpen.length} поисковых систем
-                        `;
-                            document.body.appendChild(successMessage);
-
-                            // Remove message after 3 seconds
-                            setTimeout(() => {
-                                successMessage.style.animation = 'slideOut 0.3s ease';
-                                setTimeout(() => successMessage.remove(), 300);
-                            }, 3000);
-                        }, 500);
-                    }
-                }, index * 100); // Small delay between opening tabs
+                openSearchEngine(engineType);
             });
 
             // Reset button after 1.5 seconds
@@ -962,22 +919,8 @@
                 searchButton.classList.remove('searching');
             }, 1500);
 
-            // Add CSS for animations
-            if (!document.getElementById('search-animations')) {
-                const style = document.createElement('style');
-                style.id = 'search-animations';
-                style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes slideOut {
-                    from { transform: translateX(0); opacity: 1; }
-                    to { transform: translateX(100%); opacity: 0; }
-                }
-            `;
-                document.head.appendChild(style);
-            }
+            // Update the individual buttons as well
+            updateIndividualButtons();
         }
 
         function openSearchEngine(engine) {
@@ -997,90 +940,35 @@
             }
 
             // Open in new tab/window
-            // Using '_blank' for new tabs
-            window.open(url, '_blank', 'noopener,noreferrer');
+            window.open(url, '_blank');
         }
 
-        // Individual button functions - теперь они тоже открывают ВСЕ выбранные системы
+        // Individual button functions
         function openGoogleSearch() {
-            // Select Google if not already selected
-            const googleOption = document.querySelector('.engine-option.google');
-            if (!googleOption.classList.contains('selected')) {
-                googleOption.classList.add('selected');
-            }
-            performSearch();
+            const query = document.getElementById('search-query').value.trim() || currentSearchQuery;
+            const encodedQuery = encodeURIComponent(query);
+            window.open(`https://www.google.com/search?q=${encodedQuery}&hl=ru`, '_blank');
         }
 
         function openYandexSearch() {
-            // Select Yandex if not already selected
-            const yandexOption = document.querySelector('.engine-option.yandex');
-            if (!yandexOption.classList.contains('selected')) {
-                yandexOption.classList.add('selected');
-            }
-            performSearch();
+            const query = document.getElementById('search-query').value.trim() || currentSearchQuery;
+            const encodedQuery = encodeURIComponent(query);
+            window.open(`https://yandex.ru/search/?text=${encodedQuery}&lr=213`, '_blank');
         }
 
         function openBingSearch() {
-            // Select Bing if not already selected
-            const bingOption = document.querySelector('.engine-option.bing');
-            if (!bingOption.classList.contains('selected')) {
-                bingOption.classList.add('selected');
-            }
-            performSearch();
+            const query = document.getElementById('search-query').value.trim() || currentSearchQuery;
+            const encodedQuery = encodeURIComponent(query);
+            window.open(`https://www.bing.com/search?q=${encodedQuery}&setlang=ru`, '_blank');
         }
 
-        // Quick search buttons for common queries
-        function addQuickSearchButtons() {
-            const quickQueries = [{
-                text: "История интернета",
-                query: "история развития интернета"
-            }, {
-                text: "Искусственный интеллект",
-                query: "искусственный интеллект в поисковых системах"
-            }, {
-                text: "Новости технологий",
-                query: "последние новости технологий 2023"
-            }];
-
-            const quickSearchDiv = document.createElement('div');
-            quickSearchDiv.style.cssText = `
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        `;
-
-            quickQueries.forEach(item => {
-                const button = document.createElement('button');
-                button.textContent = item.text;
-                button.style.cssText = `
-                padding: 8px 15px;
-                background: rgba(255,255,255,0.8);
-                border: 1px solid var(--blue-light);
-                border-radius: 20px;
-                color: var(--blue-dark);
-                cursor: pointer;
-                transition: all 0.2s ease;
-            `;
-                button.onmouseover = () => button.style.background = 'rgba(107, 154, 196, 0.1)';
-                button.onmouseout = () => button.style.background = 'rgba(255,255,255,0.8)';
-                button.onclick = () => {
-                    document.getElementById('search-query').value = item.query;
-                    performSearch();
-                };
-
-                quickSearchDiv.appendChild(button);
-            });
-
-            const comparisonSection = document.querySelector('.comparison-controls');
-            comparisonSection.parentNode.insertBefore(quickSearchDiv, comparisonSection.nextSibling);
+        function updateIndividualButtons() {
+            // This function would update the individual buttons if needed
+            // Currently, they use the currentSearchQuery variable directly
         }
-
-        // Initialize quick search buttons when page loads
-        window.addEventListener('load', addQuickSearchButtons);
     </script>
 </body>
 
 
 </html>
+
